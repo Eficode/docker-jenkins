@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MASTER_NAME=jenkins-master
-CONTAINER_VERSION=snapshot
+CONTAINER_VERSION=latest
 HTTP_PORT=8080
 SLAVE_PORT=50000
 HOME_VOLUME=~/docker_jenkins_home/$NAME
