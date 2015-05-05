@@ -14,6 +14,20 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 RUN apt-get install -y oracle-java8-installer
 RUN update-alternatives --set java /usr/lib/jvm/java-8-oracle/jre/bin/java
 
+# Install Robot Framework with Selenium
+RUN apt-get install -y python-pip
+RUN pip install robotframework
+RUN pip install robotframework-selenium2library
+
+# Install PhantomJS
+RUN apt-get install -y g++ build-essential python flex bison gperf ruby perl libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev libpng-dev libjpeg-dev
+RUN git clone git://github.com/ariya/phantomjs.git
+WORKDIR phantomjs
+RUN git checkout 2.0
+RUN ./build.sh --confirm
+RUN cp bin/phantomjs /usr/bin/
+
+
 # Clean Up apt
 RUN rm -rf /var/lib/apt/lists/*
 
